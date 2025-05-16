@@ -32,7 +32,7 @@ jobs:
       - name: Add OS and arch to files
         shell: bash
         run: |-
-          I=`ls --all --color=never -1 ${{ env.ARTIFACT_GLOB }}`
+          I=`ls --color=never -1 ${{ env.ARTIFACT_GLOB }}`
           echo $I | sed -E 's|(.*)\.(.*)|\1-${{ runner.os }}-${{ runner.arch }}\.\2|g' | xargs -0 mv "$I"
       - name: Upload built artifact
         uses: softprops/action-gh-release@v2.2.2
