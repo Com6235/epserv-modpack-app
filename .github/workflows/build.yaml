@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |-
           for i in `ls --all --color=never -1 ${{ env.ARTIFACT_GLOB }}`
-            do echo $i | sed -E 's/(.+)\.(.+)/\1-${{ runner.os }}-${{ runner.arch }}\.\2/g' | xargs mv "$i"
+            do echo $i | sed -E 's/(.+)\.(.+)/\1-${{ runner.os }}-${{ runner.arch }}\.\2/g' | xargs -0 mv "$i"
           done
       - name: Upload built artifact
         uses: softprops/action-gh-release@v2.2.2
